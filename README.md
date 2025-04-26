@@ -78,7 +78,7 @@ flowchart TD
     B --> C{{🏋️ Entrenamiento}}
     C -->|5‑fold CV| D([📦 Modelos .h5])
     D --> E([🌍 App Streamlit])
-
+```
 
 Desarrollado por **Fernando G.** en Abril 2025 motivado por **[Green Urban Data](https://greenurbandata.com/)**.
 
