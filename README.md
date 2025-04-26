@@ -28,14 +28,6 @@ Finalmente realizamos el despliegue de una aplicación interactiva en [Streamlit
    - Streamlit + Leafmap: mapa clicable con selección de parches.
    - Visualización satélite + máscara IA + métricas en tiempo real.
 
-El dataset está centrado en la ciudad de Valencia. Puedes clonar el proyecto ejecutando:
-```bash
-git clone https://github.com/luccifer00/GreenMask.git
-cd GreenMask
-pip install -r requirements.txt
-streamlit run app/app.py
-```
-
 
 ## 📂 Estructura del Proyecto
 
@@ -62,15 +54,6 @@ GreenMask/
 ---
 
 ## 🚀 Pipeline de Entrenamiento
-```mermaid
-graph TD
-    A[Imágenes PNOA] --> B(Preprocesado)
-    B --> C{Entrenamiento}
-    C -->|5‑fold CV| D[Modelos .h5]
-    D --> E[App Streamlit]
-```
-
-## 🚀 Pipeline de Entrenamiento
 
 ```mermaid
 flowchart TD
@@ -80,6 +63,21 @@ flowchart TD
     D --> E([🌍 App Streamlit])
 ```
 
-Desarrollado por **Fernando G.** en Abril 2025 motivado por **[Green Urban Data](https://greenurbandata.com/)**.
+## 🛠️ Cómo clonar y ejecutar el proyecto
 
-![Visitas al proyecto](https://visitor-badge.laobi.icu/badge?page_id=luccifer00.GreenMask&down=true)
+```bash
+# Clonar el repositorio
+git clone https://github.com/luccifer00/Data-Scientist-Urban-Green-Segmentation-With-UNet.git
+
+# Entrar al directorio del proyecto
+cd Data-Scientist-Urban-Green-Segmentation-With-UNet
+
+# Instalar dependencias
+pip install -r requirements.txt
+
+# Lanzar la aplicación
+streamlit run app/app.py
+```
+##
+
+Desarrollado por **Fernando G.** en Abril 2025 motivado por **[Green Urban Data](https://greenurbandata.com/)**.
