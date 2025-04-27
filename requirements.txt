@@ -1,7 +1,9 @@
+# requirements.txt para Streamlit Cloud (Python 3.12)
+
 # ------------------------------------------------------------------
 # Requerimientos principales
 # ------------------------------------------------------------------
-tensorflow==2.12.0
+tensorflow==2.18.1
 streamlit==1.36.0
 geopandas==0.14.1
 rasterio==1.3.9
@@ -13,7 +15,7 @@ requests==2.31.0
 # ------------------------------------------------------------------
 # Geoespaciales
 # ------------------------------------------------------------------
-# gdal==3.8.4 Remove gdal from requirements to avoid gdal-config error with streamlit"
+#gdal==3.8.4       Este paquete no está disponible en streamlit Cloud
 earthengine-api==1.5.11
 geemap==0.35.3
 OWSLib==0.33.0
@@ -33,3 +35,6 @@ ipython==8.12.3
 overpy==0.7
 tqdm==4.66.4
 python-dotenv==1.0.1
+
+# Nota: Si necesitas todas las librerías (GDAL, Earth Engine, etc.)
+# para desarrollo local, usa requirements-dev.txt que incluye versions que usé localmente
