@@ -8,7 +8,6 @@ __pycache__/
 #  ---- IGNORE NOTEBOOKS TEMPORALES ----- 
 # ------------------------------------------------------------------
 notebooks/future_notebooks/
-notebooks/copia 04_Preentrenamiento_con_UNET_ligero_y_CV - copia.ipynb
 
 # ------------------------------------------------------------------
 #  ---- IGNORE LOGS Y OUTPUTS ----- 
@@ -25,7 +24,6 @@ app/assets/
 # ------------------------------------------------------------------
 scripts/data_processing.py
 scripts/future_scripts/
-scripts/test_model_utils.py
 
 # ------------------------------------------------------------------
 #  ---- IGNORE ENTORNOS Y DEPENDENCIAS ----- 
