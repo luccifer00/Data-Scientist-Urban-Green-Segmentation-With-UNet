@@ -10,32 +10,48 @@ from tensorflow.keras.applications import MobileNetV2
 from tensorflow.keras.layers import Conv2D, Conv2DTranspose, UpSampling2D, concatenate,Input
 from tensorflow.keras.layers.experimental import preprocessing
 
-import tensorflow as tf
-def load_unet_with_mobilenet(input_shape=(256,256,3)):
+
+def build_augmentation_layer():
+    return preprocessing.RandomFlip(mode="horizontal_and_vertical")
+
+def load_unet_with_mobilenet(input_shape=(256,256,4)):
+    # Input y augment+proyección 4→3
     inputs = Input(shape=input_shape)
-    x = build_augmentation_layer()(inputs) 
-    base_model = MobileNetV2(input_tensor=x, include_top=False, weights="imagenet")
-    skip_names = [
-        'block_1_expand_relu',  # 128x128
-        'block_3_expand_relu',  # 64x64
-        'block_6_expand_relu',  # 32x32
-        'block_13_expand_relu'  # 16x16
+    x = build_augmentation_layer()(inputs)
+    x = Conv2D(3, (1,1), padding='same', activation='relu', name='proj_4to3')(x)
+    
+    # Backbone puro
+    backbone = MobileNetV2(input_shape=(256,256,3),
+                           include_top=False,
+                           weights='imagenet')
+    
+    # Creamos un sub-modelo que devuelva los skips + la salida
+    skip_layer_names = [
+        'block_1_expand_relu',   # 128×128
+        'block_3_expand_relu',   # 64×64
+        'block_6_expand_relu',   # 32×32
+        'block_13_expand_relu'   # 16×16
     ]
-    skips = [base_model.get_layer(name).output for name in skip_names]
-
-    x = base_model.output  # 16x16
-
-    # Decoder
+    skip_outputs = [backbone.get_layer(name).output for name in skip_layer_names]
+    down_outputs = skip_outputs + [backbone.output]
+    down_model = Model(inputs=backbone.input, outputs=down_outputs)
+    down_model.trainable = False
+    
+    # Aplicamos el sub-modelo al tensor proyectado
+    skips = down_model(x)[:-1]
+    x = down_model(x)[-1]
+    
+    # Decoder (UNet clásico)
     for skip in reversed(skips):
         x = Conv2DTranspose(256, 3, strides=2, padding='same')(x)
         x = concatenate([x, skip])
         x = Conv2D(128, 3, padding='same', activation='relu')(x)
-
-    # Final upsampling
+    
+    # Upsample final y salida
     x = Conv2DTranspose(64, 3, strides=2, padding='same')(x)
     output = Conv2D(1, 1, activation='sigmoid')(x)
-
-    return Model(inputs=base_model.input, outputs=output)
+    
+    return Model(inputs=inputs, outputs=output)
 
 
 def build_augmentation_layer():
