@@ -72,8 +72,8 @@ git clone https://github.com/luccifer00/Data-Scientist-Urban-Green-Segmentation-
 # Entrar al directorio del proyecto
 cd Data-Scientist-Urban-Green-Segmentation-With-UNet
 
-# Instalar dependencias
-pip install -r requirements.txt
+# Instalar dependencias para desarrollo local
+pip install -r requirements-dev.txt
 
 # Lanzar la aplicación
 streamlit run app/app.py
