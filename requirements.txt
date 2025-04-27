@@ -15,12 +15,9 @@ requests==2.31.0
 # ------------------------------------------------------------------
 # Geoespaciales
 # ------------------------------------------------------------------
-#gdal==3.8.4       Este paquete no está disponible en streamlit Cloud
-earthengine-api==1.5.11
-geemap==0.35.3
-OWSLib==0.33.0
-shapely==2.0.3
-mercantile==1.2.1
+
+# son para desarrollo; no son necesarios en producción
+# ver requirements-dev.txt si estas en desarrollo local
 
 # ------------------------------------------------------------------
 # Visualización/Interacción
