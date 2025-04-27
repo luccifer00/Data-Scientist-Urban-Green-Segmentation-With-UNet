@@ -45,8 +45,12 @@ if not model_files:
     st.sidebar.error(f"No hay archivos .h5 en {MODELS_DIR}")
     st.stop()
 model_opts = [f.name for f in model_files]
-default_model = next((i for i, name in enumerate(model_opts) if "fold5" in name), 0)
-chosen = st.sidebar.selectbox("Selecciona modelo", model_opts, index=default_model)
+default_name = "Mejor_modelo_CV_en_fold1.h5"
+if default_name in model_opts:
+    default_index = model_opts.index(default_name)
+else:
+    default_index = 0
+chosen = st.sidebar.selectbox("Selecciona modelo",model_opts,index=default_index)
 MODEL_PATH = MODELS_DIR / chosen
 st.sidebar.write(f"Cargando `{chosen}`…")
 try:
