@@ -16,7 +16,8 @@ requests==2.31.0
 # Geoespaciales
 # ------------------------------------------------------------------
 
-# son para desarrollo; no son necesarios en producción
+mercantile==1.2.1
+# el resto son para desarrollo; no son necesarios en producción
 # ver requirements-dev.txt si estas en desarrollo local
 
 # ------------------------------------------------------------------
