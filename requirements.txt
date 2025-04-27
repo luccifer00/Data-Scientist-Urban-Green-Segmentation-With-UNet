@@ -13,7 +13,7 @@ requests==2.31.0
 # ------------------------------------------------------------------
 # Geoespaciales
 # ------------------------------------------------------------------
-gdal==3.8.4
+# gdal==3.8.4 Remove gdal from requirements to avoid gdal-config error with streamlit"
 earthengine-api==1.5.11
 geemap==0.35.3
 OWSLib==0.33.0
