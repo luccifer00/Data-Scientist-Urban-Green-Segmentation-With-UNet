@@ -5,10 +5,9 @@
 Se hace uso de [MobileNetV2 ](https://arxiv.org/pdf/1801.04381) una arquitectura ligera sobre la que se construye un modelo **U-Net** para segmentar áreas verdes en entornos urbanos.
 Este proyecto recorre todas las fases clave de un flujo geoespacial desde la extracción de datos para crear un pequeño dataset, el preprocesado del mismo, y el entrenamiento con validación cruzada. 
 
-Finalmente realizamos el despliegue de una aplicación interactiva en [Streamlit](https://streamlit.io/). Puedes probar la aplicación desplegada en Streamlit Cloud aquí:
+Finalmente realizamos el despliegue de una aplicación interactiva en [Streamlit](https://greenmask.streamlit.app). Puedes probar la aplicación desplegada en Streamlit Cloud aquí:
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge.svg)](https://greenmask.streamlit.app)
-
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://greenmask.streamlit.app)
 
 
 ## 🚀 Resumen del Flujo
