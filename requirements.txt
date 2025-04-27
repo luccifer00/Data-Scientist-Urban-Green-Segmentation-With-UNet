@@ -33,6 +33,7 @@ ipython==8.12.3
 overpy==0.7
 tqdm==4.66.4
 python-dotenv==1.0.1
+scikit-learn==1.3.0
 
 # Nota: Si necesitas todas las librerías (GDAL, Earth Engine, etc.)
 # para desarrollo local, usa requirements-dev.txt que incluye versions que usé localmente
