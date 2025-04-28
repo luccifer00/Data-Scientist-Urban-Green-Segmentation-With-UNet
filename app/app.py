@@ -17,6 +17,11 @@ import numpy as np
 import warnings
 from rasterio.errors import NotGeoreferencedWarning
 warnings.filterwarnings("ignore", category=NotGeoreferencedWarning)
+warnings.filterwarnings(
+    "ignore",
+    message=".*use_column_width parameter has been deprecated.*",
+    category=DeprecationWarning
+)
 
 # ------------------------------------------------------------------
 # 1. PATHS Y CONFIGURACIÓN
@@ -172,10 +177,10 @@ with st.expander("🔍 Fuente de datos"):
     st.write(f"- Predicción: {pred_sm.shape}, rango: {pred_sm.min()}–{pred_sm.max()}")
 
 cols = st.columns(4)
-cols[0].image((img_sm*255).astype("uint8"), caption="Entrada RGB", use_column_width=True)
-cols[1].image((gt_sm*255).astype("uint8"), caption="Máscara Real", use_column_width=True)
-cols[2].image((pred_sm*255).astype("uint8"), caption="Predicción", use_column_width=True, clamp=True)
-cols[3].image(((pred_sm>thr)*255).astype("uint8"), caption=f"Umbral {thr}", use_column_width=True)
+cols[0].image((img_sm*255).astype("uint8"), caption="Entrada RGB")
+cols[1].image((gt_sm*255).astype("uint8"), caption="Máscara Real")
+cols[2].image((pred_sm*255).astype("uint8"), caption="Predicción", clamp=True)
+cols[3].image(((pred_sm>thr)*255).astype("uint8"), caption=f"Umbral {thr}")
 
 try:
     metrics = compute_metrics(gt_sm, pred_sm, thr)
